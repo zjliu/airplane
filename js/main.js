@@ -3,11 +3,11 @@ window.onload=function(){
 	var canvas = airDiv.querySelector("canvas"),
 	context = canvas.getContext("2d");
 	var bulletMp3 = airDiv.querySelector("#mp3");
-	var startBtn = airDiv.querySelector("gmaeStart");
-	var endBtn = airDiv.querySelector("gameEnd");
+	var startBtn = airDiv.querySelector(".gameStart span");
+	var endBtn = airDiv.querySelector(".gameEnd span.playAgain");
 	
 	var air = new jAir({		
-		"bg" : "ari.jpg",
+		"bg" : "img/air.jpg",
 		"canvas" : canvas,
 		"bulletMp3" :bulletMp3,
 		"bulletSpeed":20,

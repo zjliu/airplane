@@ -64,12 +64,12 @@ function randomStar(boundaryX,boundaryY,minRadius,maxRadius,speed){
 		this.color = array.toString();
 	}
 
-	this.move = function(){
+	this.move = function(speed){
 		if(this.y>boundaryY){
 			this.y = 0;
 		}
 		else{
-			this.y+=5;
+			this.y+=speed;
 		}
 	}
 	
