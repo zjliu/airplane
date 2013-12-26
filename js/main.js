@@ -10,10 +10,11 @@ window.onload=function(){
 		"bg" : "img/air.jpg",
 		"canvas" : canvas,
 		"bulletMp3" :bulletMp3,
-		"bulletSpeed":20,
-		"airSpeed":10,
+		//"bulletSpeed":20,
+		//"airSpeed":10,
 		"startBtn":startBtn,
-		"endBtn":endBtn
+		"endBtn":endBtn,
+		"showStar":true
 	});
 
 	this.air = air;
