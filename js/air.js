@@ -14,7 +14,7 @@ var jAir = (function () {
             context.drawImage(bgCanvas, this.x, this.y, this.w, this.h, this.position.x, this.position.y, this.w, this.h);
         }
     }
-    var Bulet = function (x, y, speed, direction) {
+    var Bullet = function (x, y, speed, direction) {
         this.x = x;
         this.y = y;
         this.speed = speed;
