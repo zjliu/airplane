@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>sprite test</title>
+<style>
+	canvas{box-shadow:rgba(0,0,0,.4) 0 0 8px;}
+</style>
+</head>
+<body>
+	<canvas width="400" height="300" id="canvas">
+</body>
+</html>
+<script src="js/Sprite.js"></script>
+<script>
+	var canvas = document.getElementById("canvas"),
+		context = canvas.getContext("2d"),
+		W = canvas.width,
+		H = canvas.height;
+
+	var spritesheet = new Image();
+	spritesheet.onload=function(){
+		var cells=[
+			{x:0,y:0,w:80,h:80},
+			{x:80,y:0,w:80,h:80},
+			{x:160,y:0,w:80,h:80},
+
+			{x:0,y:80,w:80,h:80},
+			{x:80,y:80,w:80,h:80},
+			{x:160,y:80,w:80,h:80},
+
+			{x:0,y:160,w:80,h:80},
+			{x:80,y:160,w:80,h:80},
+			{x:160,y:160,w:80,h:80},
+
+			{x:0,y:240,w:80,h:80},
+			{x:80,y:240,w:80,h:80},
+			{x:160,y:240,w:80,h:80}
+
+		];
+		var flayInplace = {
+			lastAdvance :0,
+			playInterval :100,
+			execute:function(sprite,context,now){
+				if(now-this.lastAdvance>this.playInterval){
+					sprite.painter.advance();
+					this.lastAdvance = now;
+				}
+			}
+		}
+		
+		var move = {
+			lastAdvance :0,
+			playInterval :100,
+			execute:function(sprite,context,now){
+				if(now-this.lastAdvance>this.playInterval){
+					sprite.left+=5;
+					sprite.top+=5;
+					this.lastAdvance = now;
+				}
+			}
+		}
+
+		var sprite = new Sprite("fly",new SpriteSheetPainter(spritesheet,cells),[flayInplace,move]);
+		
+		function animate(time){
+			context.clearRect(0,0,W,H);
+			sprite.update(context,time);
+			sprite.print(context);
+			requestAnimationFrame(animate);
+		}
+		requestAnimationFrame(animate);
+	}
+	spritesheet.src = "img/Aircraft.png";
+</script>
